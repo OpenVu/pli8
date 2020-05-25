@@ -63,12 +63,6 @@ if test `echo "$BOXTYPE" | cut -b 1-2` == "dm"; then
 	AC_DEFINE(KEY_PLAY_ACTUALLY_IS_KEY_PLAYPAUSE, 1,[define when rc sends a KEY_PLAY event for its KEY_PLAYPAUSE key])
 fi
 
-AC_ARG_WITH(boxbrand,
-	[  --with-boxbrand=NAME box brand [[none,dreambox...]]],
-	[BOXBRAND="$withval"],[BOXBRAND="dreambox"])
-AC_SUBST(BOXBRAND)
-AC_DEFINE_UNQUOTED(BOXBRAND,"$BOXBRAND",[box brand])
-
 AC_ARG_WITH(textlcd,
 	AC_HELP_STRING([--with-textlcd], [use ascii based lcd, yes or no]),
 	[[withtextlcd=$withval]],
@@ -245,17 +239,6 @@ AC_ARG_WITH(accelerationaccumulation,
 if test x"$with_accelerationaccumulation" = xyes ; then
 	AC_DEFINE(SUPPORT_ACCUMULATED_ACCELERATION_OPERATIONS, 1,[Accumulate blit/fill acceleration operations])
 fi
-
-AC_ARG_WITH(oever,
-	[  --with-oever=NAME oe name [[7.2,...]]],
-	[OE_VER="$withval"],[OE_VER=""])
-AC_SUBST(OE_VER)
-AC_DEFINE_UNQUOTED(OE_VER,"$OE_VER",[oe name])
-if test `echo "$OE_VER" | cut -b 1-3` == "8."; then
-	AC_DEFINE(HAVE_NEWOE, 1,[enable new OpenEmbedded specific stuff])
-fi
-
-AM_CONDITIONAL(VUPLUS, test "$BOXBRAND" == "vuplus")
 
 AC_CHECK_HEADERS([sys/klog.h])
 AC_CHECK_FUNCS([klogctl])
