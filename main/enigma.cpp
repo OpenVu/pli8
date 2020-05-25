@@ -348,11 +348,6 @@ const char *getBoxType()
 	return BOXTYPE;
 }
 
-const char *getBoxBrand()
-{
-	return BOXBRAND;
-}
-
 #include <malloc.h>
 
 void dump_malloc_stats(void)
