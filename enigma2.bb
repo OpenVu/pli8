@@ -55,6 +55,8 @@ EXTRA_OECONF = "\
 	STAGING_INCDIR=${STAGING_INCDIR} \
 	STAGING_LIBDIR=${STAGING_LIBDIR} \
 	"
+	
+LDFLAGS_prepend = "${@bb.utils.contains('GST_VERSION', '1.0', ' -lxml2 ', '', d)}"	
 
 do_install_append() {
 	install -d ${D}/usr/share/keymaps
